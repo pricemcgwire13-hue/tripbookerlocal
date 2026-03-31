@@ -1,0 +1,13 @@
+.card { 
+	display: flex;
+
+	width: 40%;
+	background-color: white;
+
+	img { 
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+		width: 33%;
+	}
+}
+

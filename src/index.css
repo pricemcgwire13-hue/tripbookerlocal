@@ -1,0 +1,61 @@
+:root {
+  --color-primary: #788bff;
+  --color-secondary: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+	
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: "Inter", sans-serif;
+	color: black;
+}
+
+button:hover, a:hover {
+	cursor: pointer;	
+}
+
+<!--
+Source - https://stackoverflow.com/a
+
+Posted by Andreas Wong
+
+Retrieved 2025-11-14, License - CC BY-SA 3.0
+-->
+
+
+
+a { color:red } /* Globally */
+
+/* Each state */
+
+a { text-decoration: none; }
+a:visited { text-decoration: none; color:inherit; }
+a:hover { text-decoration: none; color:inherit; }
+a:focus { text-decoration: none; color:inherit; }
+a:hover, a:active { text-decoration: none; color:inherit }
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding-left: 0;
+}
