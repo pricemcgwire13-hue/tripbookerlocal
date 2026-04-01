@@ -2,7 +2,35 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	
-	background-color: #AFE0E7;
-	padding: 0 3rem;
+	background: #a8c9cf;
+	padding: 10px 16px;
+}
+
+.logo {
+	width: 125x;
+	height: 125px;
+	object-fit: contain;
+}
+
+.header_center {
+	flex: 1;
+	text-align: center;
+}
+
+.header_center h1 {
+	margin: 0;
+	font-size: 4rem;
+	color: #7a1f2b;
+	font-weight: 500;
+}
+
+.header_right {
+	display: flex;
+	gap: 32px;
+	align-items: center;
+}
+
+.icon {
+	font-size: 2.6rem;
+	cursor: pointer;
 }
