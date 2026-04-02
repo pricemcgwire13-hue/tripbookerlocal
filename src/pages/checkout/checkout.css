@@ -1,6 +1,210 @@
 .checkout_page {
+	min-height: 100vh;
+	background: #e8e8e8;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #1f1f1f;
+}
 
-	flex: 1;
+.checkout_content {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 24px;
+	padding: 20px 16px 30px;
+	max-width: 1280px;
+	margin: 0 auto;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.checkout_left,
+.checkout_middle,
+.checkout_right {
+	width: 100%;
+}
+
+.form_section {
+	margin-bottom: 26px;
+}
+
+.form_section h2,
+.summary_section h2 {
+	font-size: 1.9rem;
+	font-weight: 500;
+	margin: 0 0 14px;
+}
+
+.form_row {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin-bottom: 12px;
+}
+
+.form_row label,
+.small_field label,
+.summary_line,
+.price_box p,
+.price_line,
+.price_total {
+	font-size: 1rem;
+}
+
+.form_row input,
+.small_field input {
+	height: 34px;
+	border: 2px solid #496b9a;
+	background: #f5f5f5;
+	padding: 4px 8px;
+	box-sizing: border-box;
+	outline: none;
+}
+
+.payment_small_row,
+.billing_split {
+	display: flex;
+	gap: 14px;
+	margin-bottom: 10px;
+	flex-wrap: wrap;
+}
+
+.small_field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	width: 100px;
+}
+
+.image_stack {
+	border: 4px solid #d9a100;
+	background: #fff;
+	overflow: hidden;
+}
+
+.image_stack img {
+	display: block;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+.summary_section {
+	margin-bottom: 28px;
+}
+
+.summary_line {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 18px;
+}
+
+.price_box {
+	border: 4px solid #496b9a;
+	padding: 14px 14px 24px;
+	background: #efefef;
+	margin-bottom: 28px;
+}
+
+.price_box h3 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	margin: 0 0 8px;
+}
+
+.price_box p {
+	margin: 0 0 22px;
+}
+
+.price_line {
+	margin-bottom: 18px;
+}
+
+.price_total {
+	margin-top: 28px;
+	font-weight: 500;
+}
+
+.confirm_btn {
+	background: #496b9a;
+	color: #f4c542;
+	border: none;
+	padding: 16px 20px;
+	font-size: 1rem;
+	cursor: pointer;
+	width: 100%;
+	max-width: 240px;
+}
+
+.confirm_btn:hover {
+	opacity: 0.9;
+}
+
+.checkout_footer_bar {
+	background: #496b9a;
+	color: #f4c542;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 16px;
+	font-size: 2rem;
+	margin-top: 20px;
+}
+
+
+/* tablet */
+@media (min-width: 768px) {
+	.checkout_content {
+		grid-template-columns: 1fr 1.2fr 0.9fr;
+		align-items: start;
+		gap: 34px;
+		padding: 28px 24px 36px;
+	}
+
+	.form_section h2,
+	.summary_section h2 {
+		font-size: 2.1rem;
+	}
+
+	.price_box h3 {
+		font-size: 2rem;
+	}
+}
+
+/* desktop */
+@media (min-width: 1100px) {
+	.checkout_content {
+		grid-template-columns: 0.95fr 1.15fr 0.8fr;
+		padding: 26px 28px 30px;
+	}
+
+	.form_row {
+		display: grid;
+		grid-template-columns: 110px 1fr;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.form_row label {
+		margin: 0;
+	}
+
+	.form_row input {
+		width: 100%;
+	}
+
+	.payment_small_row,
+	.billing_split {
+		gap: 18px;
+	}
+
+	.summary_line,
+	.price_box p,
+	.price_line,
+	.price_total,
+	.form_row label,
+	.small_field label {
+		font-size: 1rem;
+	}
 }
