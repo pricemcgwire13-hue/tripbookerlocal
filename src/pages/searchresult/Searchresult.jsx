@@ -17,7 +17,20 @@ const Searchresult = () => {
 
 			<p className="filters">Filters:</p>
 
-			
+			<div className="card">
+				<img
+					src=""
+					alt=""
+				/>
+
+				<div className="card_content">
+					<h3>Capella Hanoi</h3>
+					<ul>
+						<li>Breakfast Included</li>
+						<li>Old Quarter</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	)
 }
