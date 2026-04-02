@@ -3,8 +3,12 @@ import './searchresult.css'
 const Searchresult = () => {
 	return(
 		<div className="search_result">
-			Search Result Page	
-			{/* Search result html goes here, style sheet is in the searchresult.css */}
+			<div className="tabs">
+				<div className = "tab">Hotel</div>
+				<div className = "tab active">Homes</div>
+
+
+			</div>
 		</div>
 	)
 }
