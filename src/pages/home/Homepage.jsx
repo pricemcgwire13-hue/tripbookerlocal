@@ -27,10 +27,22 @@ const Homepage = () => {
 				</div>
 
 				<div className="options_bar">
-					<FaBed />
-					<FaPlane />
-					<FaCar />
-					<FaShip />
+					<div>
+						<FaBed />
+						Hotel
+					</div>
+					<div>
+						<FaPlane />
+						Flight
+					</div>
+					<div>
+						<FaCar />
+						Rental
+					</div>
+					<div>	
+						<FaShip />
+						Cruise
+					</div>
 				</div>
 
 				<div className="submit_btn">
