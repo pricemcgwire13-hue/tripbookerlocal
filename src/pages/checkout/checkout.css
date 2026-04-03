@@ -11,8 +11,8 @@
 .checkout_content {
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 24px;
-	padding: 20px 16px 30px;
+	gap: 18px;
+	padding: 16px 12px 24px;
 	max-width: 1280px;
 	margin: 0 auto;
 	width: 100%;
@@ -26,14 +26,14 @@
 }
 
 .form_section {
-	margin-bottom: 26px;
+	margin-bottom: 22px;
 }
 
 .form_section h2,
 .summary_section h2 {
-	font-size: 1.9rem;
+	font-size: 1.5rem;
 	font-weight: 500;
-	margin: 0 0 14px;
+	margin: 0 0 12px;
 }
 
 .form_row {
@@ -54,18 +54,19 @@
 
 .form_row input,
 .small_field input {
-	height: 34px;
+	height: 38px;
 	border: 2px solid #496b9a;
 	background: #f5f5f5;
 	padding: 4px 8px;
 	box-sizing: border-box;
 	outline: none;
+	width: 100%;
 }
 
 .payment_small_row,
 .billing_split {
 	display: flex;
-	gap: 14px;
+	gap: 12px;
 	margin-bottom: 10px;
 	flex-wrap: wrap;
 }
@@ -74,7 +75,9 @@
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
-	width: 100px;
+	width: 100%;
+	max-width: 140px;
+	flex: 1 1 120px;
 }
 
 .image_stack {
@@ -91,38 +94,38 @@
 }
 
 .summary_section {
-	margin-bottom: 28px;
+	margin-bottom: 24px;
 }
 
 .summary_line {
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 18px;
+	margin-bottom: 16px;
 }
 
 .price_box {
 	border: 4px solid #496b9a;
 	padding: 14px 14px 24px;
 	background: #efefef;
-	margin-bottom: 28px;
+	margin-bottom: 24px;
 }
 
 .price_box h3 {
-	font-size: 1.8rem;
+	font-size: 1.5rem;
 	font-weight: 500;
 	margin: 0 0 8px;
 }
 
 .price_box p {
-	margin: 0 0 22px;
+	margin: 0 0 18px;
 }
 
 .price_line {
-	margin-bottom: 18px;
+	margin-bottom: 16px;
 }
 
 .price_total {
-	margin-top: 28px;
+	margin-top: 24px;
 	font-weight: 500;
 }
 
@@ -134,7 +137,7 @@
 	font-size: 1rem;
 	cursor: pointer;
 	width: 100%;
-	max-width: 240px;
+	max-width: none;
 }
 
 .confirm_btn:hover {
@@ -152,24 +155,10 @@
 	margin-top: 20px;
 }
 
-
-/* tablet */
-@media (min-width: 768px) {
-	.checkout_content {
-		grid-template-columns: 1fr 1.2fr 0.9fr;
-		align-items: start;
-		gap: 34px;
-		padding: 28px 24px 36px;
-	}
-
-	.form_section h2,
-	.summary_section h2 {
-		font-size: 2.1rem;
-	}
-
-	.price_box h3 {
-		font-size: 2rem;
-	}
+.footer_right {
+	display: flex;
+	gap: 16px;
+	align-items: center;
 }
 
 /* desktop */
@@ -206,5 +195,14 @@
 	.form_row label,
 	.small_field label {
 		font-size: 1rem;
+	}
+
+	.form_section h2,
+	.summary_section h2 {
+		font-size: 2.1rem;
+	}
+
+	.price_box h3 {
+		font-size: 2rem;
 	}
 }
