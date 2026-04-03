@@ -34,8 +34,31 @@
 	cursor: pointer;
 }
 
+/* nav bar under header */
+.sub_nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 28px;
+	padding: 10px 16px;
+	background: #d9e8eb;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.sub_nav a {
+	text-decoration: none;
+	color: #7a1f2b;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.sub_nav a:hover {
+	text-decoration: underline;
+}
+
 @media (max-width: 600px) {
-  	.header_center h1 {
+	.header_center h1 {
 		font-size: 2rem;
 	}
 
@@ -45,5 +68,15 @@
 
 	.icon {
 		font-size: 2rem;
+	}
+
+	.sub_nav {
+		gap: 14px;
+		padding: 8px 10px;
+		flex-wrap: wrap;
+	}
+
+	.sub_nav a {
+		font-size: 0.9rem;
 	}
 }
