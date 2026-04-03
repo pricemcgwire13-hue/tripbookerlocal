@@ -7,8 +7,7 @@
 }
 
 .logo {
-	width: 125x;
-	height: 125px;
+	width: 5vw;
 	object-fit: contain;
 }
 
@@ -35,8 +34,16 @@
 	cursor: pointer;
 }
 
- @media (max-width: 600px) {
-     .header_center h1 {
-		 font-size: 16px;
-	 }
+@media (max-width: 600px) {
+  	.header_center h1 {
+		font-size: 2rem;
+	}
+
+	.logo {
+		width: 20vw;
+	}
+
+	.icon {
+		font-size: 2rem;
+	}
 }
