@@ -1,9 +1,14 @@
 import './header.css'
-import { FaUser } from 'react-icons/fa'
+import { useState } from 'react'
+import { FaUser, FaBars, FaTimes } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 
 const Header = () => {
+	const [menuOpen, setMenuOpen] = useState(false)
+
+	const closeMenu = () => setMenuOpen(false)
+
 	return (
 		<>
 			<header className="header">
@@ -17,13 +22,21 @@ const Header = () => {
 
 				<div className="header_right">
 					<div className="icon"><FaUser /></div>
+
+					<button
+						className="menu_btn"
+						onClick={() => setMenuOpen(!menuOpen)}
+						aria-label="Toggle navigation menu"
+					>
+						{menuOpen ? <FaTimes /> : <FaBars />}
+					</button>
 				</div>
 			</header>
 
-			<nav className="sub_nav">
-				<Link to="/">Home</Link>
-				<Link to="/searchresult">Search Results</Link>
-				<Link to="/checkout">Checkout</Link>
+			<nav className={`sub_nav ${menuOpen ? 'open' : ''}`}>
+				<Link to="/" onClick={closeMenu}>Home</Link>
+				<Link to="/searchresult" onClick={closeMenu}>Search Results</Link>
+				<Link to="/checkout" onClick={closeMenu}>Checkout</Link>
 			</nav>
 		</>
 	)
