@@ -8,6 +8,7 @@ import beachPNG from './assets/beach.png'
 import Homepage from './pages/home/Homepage.jsx'
 import Checkout from './pages/checkout/Checkout.jsx'
 import Searchresult from './pages/searchresult/Searchresult.jsx'
+import ErrorExample from './pages/errorexample/ErrorExample.jsx'
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 				<Route path='/' element={<Homepage />}/>
 				<Route path='/searchresult' element={<Searchresult/>}/>
 				<Route path='/checkout' element={<Checkout />}/>
+				<Route path='/errorexample' element={<ErrorExample />}/>
 			</Routes>
   	  	</div>
   	)
