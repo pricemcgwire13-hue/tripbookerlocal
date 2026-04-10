@@ -14,9 +14,12 @@ import {
 	FaArrowRight
 } from 'react-icons/fa'
 
+
+
 const Homepage = () => {
 	const navigate = useNavigate()
 	const [pageReady, setPageReady] = useState(false)
+	const [isSubmitting, setIsSubmitting] = useState(false)
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -71,10 +74,30 @@ const Homepage = () => {
 				</div>
 
 				<div className="submit_btn">
-					<button type="button" onClick={() => navigate('/searchresult')}>
-						Submit
-					</button>
-				</div>
+				<button
+					type="button"
+					className={isSubmitting ? 'loading' : ''}
+					disabled={isSubmitting}
+					onClick={() => {
+						if (isSubmitting) return
+
+						setIsSubmitting(true)
+
+						setTimeout(() => {
+							navigate('/searchresult')
+						}, 900)
+					}}
+				>
+					{isSubmitting ? (
+						<>
+							<span className="spinner"></span>
+							Loading...
+						</>
+					) : (
+						'Submit'
+					)}
+				</button>
+			</div>
 			</div>
 		</div>
 	)
