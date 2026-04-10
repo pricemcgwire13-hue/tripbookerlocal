@@ -1,95 +1,207 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import './searchresult.css'
 import Hotel1 from '../../assets/Hotel1.png'
 import Hotel2 from '../../assets/Hotel2.png'
 import { FaHome, FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
-
+const hotelsData = [
+  {
+    id: 1,
+    name: "Capella Hanoi",
+    features: ["Breakfast Included", "Old Quarter"],
+    rating: "7.6",
+    miles: "2 miles",
+    image: Hotel1
+  },
+  {
+    id: 2,
+    name: "Hilton Garden Inn Hanoi",
+    features: ["Pool"],
+    rating: "6.4",
+    miles: "1 mile",
+    image: Hotel2
+  }
+]
 
 const Searchresult = () => {
-	return(
-		<div className="search_result">
-			<div className="search_container">
-				<input 
-				type="date"
-				className="date_input"
-			/>
-				<input
-					type="text"
-					className="search_input"
-					placeholder="Search a property"
-				/>
-				<button className="search_button">Search</button>
+  const navigate = useNavigate();
 
-			</div>
+  const [query, setQuery] = useState("")
+  const [results, setResults] = useState(hotelsData)
+  const [loading, setLoading] = useState(false)
+  const [showSuggestions, setShowSuggestions] = useState(false)
+  const [selectedFilters, setSelectedFilters] = useState([])
 
-			<div className="tabs">
-				<div className="tab active">Hotel</div>
-				<div className="tab">Homes</div>
-				<div className="tab">Stays</div>
-			</div>
+  const filterOptions = ["Old Quarter", "Pool", "Breakfast"]
 
-			<input
-				type="text"
-				className="search_box"
-				placeholder="Search a property"
-			/>
+  useEffect(() => {
+    let filtered = hotelsData
 
-			<p className="filters">Filters:</p>
-			<div className="filter_list">
-  				<div className="filter_item">
-    				<div className="filter_box"></div>
-    				Pool (2)
-  				</div>
+    if (query !== "") {
+      filtered = filtered.filter(hotel =>
+        hotel.name.toLowerCase().includes(query.toLowerCase()) ||
+        hotel.features.join(" ").toLowerCase().includes(query.toLowerCase())
+      )
+    }
 
-  				<div className="filter_item">
-    				<div className="filter_box"></div>
-   					Living Room (1)
-  				</div>
+    if (selectedFilters.length > 0) {
+      filtered = filtered.filter(hotel =>
+        selectedFilters.every(f =>
+          hotel.features.some(feature =>
+            feature.toLowerCase().includes(f.toLowerCase())
+          )
+        )
+      )
+    }
 
-  				<div className="filter_item">
-    				<div className="filter_box"></div>
-    				Backyard (3)
-  				</div>
-			</div>
+    setResults(filtered)
+  }, [query, selectedFilters])
 
-			<div className="card">
-				<img src={Hotel1} alt="Hotel 1"/>
+  const handleSearch = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 1200)
+  }
 
-				<div className="card_content">
-					<h3>Capella Hanoi</h3>
-					<ul>
-						<li>Breakfast Included</li>
-						<li>Old Quarter</li>
-					</ul>
-					<p className="rating">7.6 ★</p>
-					<p className="miles">2 miles</p>
-				</div>
-			</div>
-	
-			<div className="card">
-				<img src={Hotel2} alt="Hotel 2"/>
-				<div className="card_content2">
-					<h3>Hilton Garden In HaNoi</h3>
-					<ul>
-						<li>Pool</li>
-					</ul>
-					<p className="rating">6.4 ★</p>
-					<p className="miles">1 mile</p>
-				</div>
-			</div>
+  const toggleFilter = (filter) => {
+    setSelectedFilters(prev =>
+      prev.includes(filter)
+        ? prev.filter(f => f !== filter)
+        : [...prev, filter]
+    )
+  }
 
-			<div className="checkout_footer_bar">
-  				<div className="footer_left">
-    				<FaHome size={28} />
-  				</div>
+  return (
+    <div className="search_result">
 
-  				<div className="footer_right">
-    				<FaArrowLeft size={24} />
-    				<FaArrowRight size={24} />
-  				</div>
-			</div>
-		</div>
-	)
+      <div className="search_container">
+        <input type="date" className="date_input" />
+
+        <div style={{ position: "relative" }}>
+          <input
+            type="text"
+            className="search_input"
+            placeholder="Search for location"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+
+          {showSuggestions && (
+            <div className="suggestions">
+              {results.length > 0 ? (
+                results.map(item => (
+                  <div
+                    key={item.id}
+                    className="suggestion_item"
+                    onClick={() => {
+                      setQuery(item.name)
+                      setShowSuggestions(false)
+                    }}
+                  >
+                    {item.name}
+                  </div>
+                ))
+              ) : (
+                <div className="no_results">No results found</div>
+              )}
+            </div>
+          )}
+        </div>
+
+        <button
+          className="search_button"
+          onClick={handleSearch}
+          disabled={loading}
+        >
+          {loading ? "Loading..." : "Search"}
+        </button>
+      </div>
+
+      {/* Tabs restored */}
+      <div className="tabs">
+        <div className="tab active">Hotel</div>
+        <div className="tab">Homes</div>
+        <div className="tab">Stays</div>
+      </div>
+
+      <p className="filters">Filters:</p>
+
+      <div className="filter_list">
+        {filterOptions.map(option => (
+          <div
+            key={option}
+            className="filter_item"
+            onClick={() => toggleFilter(option)}
+          >
+            <div className={`filter_box ${selectedFilters.includes(option) ? "active_filter" : ""}`}></div>
+            {option}
+          </div>
+        ))}
+      </div>
+
+      {loading ? (
+        <div className="loader">Loading results...</div>
+      ) : (
+        <>
+          {results.length === 0 ? (
+            <p>No results found</p>
+          ) : (
+            results.map(hotel => (
+              <div key={hotel.id} className="card fade-in">
+                <img src={hotel.image} alt={hotel.name} />
+
+                <div className="card_content">
+                  <h3>{hotel.name}</h3>
+                  <ul>
+                    {hotel.features.map((f, i) => (
+                      <li key={i}>{f}</li>
+                    ))}
+                  </ul>
+
+                  <p className="rating">{hotel.rating} ★</p>
+                  <p className="miles">{hotel.miles}</p>
+                </div>
+              </div>
+            ))
+          )}
+        </>
+      )}
+
+      <div className="checkout_footer_bar">
+        <button
+          className="footer_nav_btn"
+          aria-label="Home"
+          type="button"
+          onClick={() => navigate('/')}
+        >
+          <FaHome size={20} />
+        </button>
+
+        <div className="footer_right">
+          <button
+            className="footer_nav_btn"
+            aria-label="Previous"
+            type="button"
+            onClick={() => navigate(-1)}
+          >
+            <FaArrowLeft size={18} />
+          </button>
+
+          <button
+            className="footer_nav_btn"
+            aria-label="Next"
+            type="button"
+            onClick={() => navigate('/searchresult')}
+          >
+            <FaArrowRight size={18} />
+          </button>
+        </div>
+      </div>
+
+    </div>
+  )
 }
 
 export default Searchresult
