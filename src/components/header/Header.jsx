@@ -9,6 +9,7 @@ const Header = () => {
 	const [profileLoading, setProfileLoading] = useState(false)
 	const location = useLocation()
 	const navigate = useNavigate()
+	const [navLoading, setNavLoading] = useState('')
 
 	const closeMenu = () => setMenuOpen(false)
 
@@ -25,6 +26,18 @@ const Header = () => {
 			setProfileLoading(false)
 		}, 700)
 	}
+
+	const handleNavClick = (path) => {
+	if (navLoading || location.pathname === path) return
+
+	closeMenu()
+	setNavLoading(path)
+
+	setTimeout(() => {
+		navigate(path)
+		setNavLoading('')
+	}, 500)
+}
 
 	return (
 		<>
@@ -62,28 +75,35 @@ const Header = () => {
 			</header>
 
 			<nav className={`sub_nav ${menuOpen ? 'open' : ''}`}>
-				<Link to="/" onClick={closeMenu} className={isActive('/') ? 'active' : ''}>
-					<FaHome />
+				<button
+					type="button"
+					className={`nav_link_btn ${isActive('/') ? 'active' : ''}`}
+					onClick={() => handleNavClick('/')}
+					disabled={navLoading === '/'}
+				>
+					{navLoading === '/' ? <span className="mini_spinner"></span> : <FaHome />}
 					<span>Home</span>
-				</Link>
+				</button>
 
-				<Link
-					to="/searchresult"
-					onClick={closeMenu}
-					className={isActive('/searchresult') ? 'active' : ''}
+				<button
+					type="button"
+					className={`nav_link_btn ${isActive('/searchresult') ? 'active' : ''}`}
+					onClick={() => handleNavClick('/searchresult')}
+					disabled={navLoading === '/searchresult'}
 				>
-					<FaSearch />
+					{navLoading === '/searchresult' ? <span className="mini_spinner"></span> : <FaSearch />}
 					<span>Search</span>
-				</Link>
+				</button>
 
-				<Link
-					to="/checkout"
-					onClick={closeMenu}
-					className={isActive('/checkout') ? 'active' : ''}
+				<button
+					type="button"
+					className={`nav_link_btn ${isActive('/checkout') ? 'active' : ''}`}
+					onClick={() => handleNavClick('/checkout')}
+					disabled={navLoading === '/checkout'}
 				>
-					<FaCreditCard />
+					{navLoading === '/checkout' ? <span className="mini_spinner"></span> : <FaCreditCard />}
 					<span>Checkout</span>
-				</Link>
+				</button>
 			</nav>
 		</>
 	)
