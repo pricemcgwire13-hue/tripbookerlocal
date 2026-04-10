@@ -28,7 +28,7 @@
 
 .hero {
 	flex: 1;
-	background-image: url('../../assets/beach.png');
+	background-image: url('../../assets/beachtwo.jpg');
 	background-size: cover;
 	background-position: center;
 	display: flex;
@@ -142,6 +142,7 @@
 
 /* footer copied to match other pages */
 .checkout_footer_bar {
+	position: fixed;
 	background: rgba(15, 23, 42, 0.96);
 	backdrop-filter: blur(10px);
 	display: flex;
