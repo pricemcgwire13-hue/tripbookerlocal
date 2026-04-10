@@ -1,4 +1,4 @@
-import { useNavigation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './footer.css'
 import {
 	FaHome,
@@ -15,6 +15,9 @@ import {
 } from 'react-icons/fa'
 
 const Footer = () => {
+
+    const navigate = useNavigate()
+
 	return(
 		<>
 		<div className="checkout_footer_bar">

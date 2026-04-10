@@ -153,6 +153,34 @@
 	box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.16);
 }
 
+.submit_btn button.loading {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	min-width: 170px;
+}
+
+.submit_btn button:disabled {
+	cursor: not-allowed;
+	opacity: 0.95;
+}
+
+.spinner {
+	width: 18px;
+	height: 18px;
+	border: 2px solid rgba(255, 255, 255, 0.35);
+	border-top-color: #ffffff;
+	border-radius: 50%;
+	animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
 .footer_right {
 	display: flex;
 	gap: 12px;
