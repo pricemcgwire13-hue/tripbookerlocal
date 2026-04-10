@@ -31,7 +31,7 @@ const Homepage = () => {
 
 	return (
 		<div className={`home_page ${pageReady ? 'page_ready' : ''}`}>
-			<h1 className="title">Welcome to TripBooker!</h1>
+			<h1 className="title">Find Your Destination!</h1>
 
 			<div className="hero">
 				<div className="search_bar">

@@ -17,7 +17,7 @@
 
 # assignment 11
 
-# spinner loading states on buttons 'home, search, checkout, submit' on home page. Spinner on profile button in header.
+# spinner loading states on buttons 'home, search, checkout, submit' on home page. Spinner on profile button in header. spinner on search in search page
 
 # small animations when hovering over 'hotel, flight, rental, cruise' on home page. Hover states also added throughout website buttons. on checkout page added small enlarge animation when hovering over sections of the page. fade ins on all pages
 
