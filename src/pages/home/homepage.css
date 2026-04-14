@@ -1,247 +1,345 @@
-.home_page {
-	display: flex;
-	flex-direction: column;
-	flex: 1;
-	min-height: 100vh;
-	background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
-	font-family: Arial, Helvetica, sans-serif;
-	color: #1f2937;
-	opacity: 0;
-	transform: translateY(10px);
-	transition: opacity 0.45s ease, transform 0.45s ease;
+.search_control {
+	position: relative;
 }
 
-.home_page.page_ready {
-	opacity: 1;
-	transform: translateY(0);
-}
-
-.title {
-	text-align: center;
-	background: #f3f3f3;
-	padding: 20px 0;
-	color: #7b1e2b;
-	font-weight: 600;
-	font-size: 32px;
-	margin: 0;
-}
-
-.hero {
-	flex: 1;
-	background-image: url('../../assets/beachtwo.jpg');
-	background-size: cover;
-	background-position: center;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 35px;
-	padding: 32px 16px;
-}
-
-.search_bar {
-	display: flex;
-	gap: 40px;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-
-.search_item {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-	background-color: #3f5c85;
-	color: white;
-	padding: 20px 35px;
-	border-radius: 10px;
-	font-size: 20px;
-	min-width: 220px;
-	justify-content: center;
+.search_control .search_item {
+	width: 100%;
 	border: 2px solid #1f2f4d;
-	box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
-	transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-	cursor: pointer;
+	font: inherit;
 }
 
-.search_item:hover {
-	transform: translateY(-2px);
-	background-color: #4a6b99;
-	box-shadow: 0 12px 24px rgba(15, 23, 42, 0.2);
+.search_popup {
+	position: absolute;
+	top: calc(100% + 10px);
+	left: 50%;
+	transform: translateX(-50%);
+	width: 320px;
+	max-width: 90vw;
+	background: rgba(255, 255, 255, 0.98);
+	border-radius: 16px;
+	box-shadow: 0 16px 36px rgba(15, 23, 42, 0.22);
+	border: 1px solid #d9e2ec;
+	padding: 14px;
+	z-index: 30;
 }
 
-.search_item svg {
-	font-size: 22px;
-	transition: transform 0.2s ease;
-}
-
-.search_item:hover svg {
-	transform: scale(1.08);
-}
-
-.options_bar {
-	display: flex;
-	gap: 80px;
-	background: rgba(63, 92, 133, 0.5);
-	padding: 25px 80px;
-	border-radius: 12px;
-	border: 3px solid #f0b429;
-	width: 60%;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-}
-
-.option_item {
+.location_dropdown {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	color: white;
-	font-size: 1.3rem;
-	cursor: pointer;
-	transition: transform 0.2s ease, color 0.2s ease;
+	gap: 8px;
+	max-height: 320px;
+	overflow-y: auto;
 }
 
-.option_item:hover {
-	transform: translateY(-2px) scale(1.04);
-	color: #ffffff;
-}
-
-.option_item svg {
-	font-size: 40px;
-	color: #f5dede;
-	transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.option_item:hover svg {
-	transform: scale(1.15);
-	color: white;
-}
-
-.submit_btn {
-	margin-top: 10px;
-}
-
-.submit_btn button {
-	background-color: #243a6f;
-	color: #ffc857;
-	padding: 18px 50px;
-	border-radius: 35px;
+.dropdown_option {
+	width: 100%;
+	text-align: left;
+	padding: 12px 14px;
 	border: none;
-	font-size: 22px;
+	border-radius: 10px;
+	background: #f5f7fb;
+	color: #243a6f;
+	font-size: 15px;
 	cursor: pointer;
-	z-index: 2;
-	box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
-	transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+	transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.submit_btn button:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 14px 28px rgba(15, 23, 42, 0.24);
-	background-color: #2c4786;
+.dropdown_option:hover {
+	background: #e8eef8;
+	transform: translateX(2px);
 }
 
-/* footer copied to match other pages */
-.checkout_footer_bar {
-	position: fixed;
-	background: rgba(15, 23, 42, 0.96);
-	backdrop-filter: blur(10px);
+.popup_title {
+	font-size: 16px;
+	font-weight: 700;
+	color: #243a6f;
+	margin-bottom: 12px;
+	text-align: center;
+}
+
+.date_picker_popup {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 12px 16px;
-	margin-top: 0;
-	box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.16);
+	flex-direction: column;
+	gap: 14px;
 }
 
-.submit_btn button.loading {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
-	min-width: 170px;
-}
-
-.submit_btn button:disabled {
-	cursor: not-allowed;
-	opacity: 0.95;
-}
-
-.spinner {
-	width: 18px;
-	height: 18px;
-	border: 2px solid rgba(255, 255, 255, 0.35);
-	border-top-color: #ffffff;
-	border-radius: 50%;
-	animation: spin 0.75s linear infinite;
-}
-
-@keyframes spin {
-	to {
-		transform: rotate(360deg);
-	}
-}
-
-.footer_right {
+.date_fields {
 	display: flex;
+	flex-direction: column;
 	gap: 12px;
-	align-items: center;
 }
 
-.footer_nav_btn {
-	width: 46px;
-	height: 46px;
-	border: none;
-	border-radius: 14px;
-	background: rgba(255, 255, 255, 0.1);
-	color: #ffffff;
+.date_field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.date_field label {
+	font-size: 14px;
+	font-weight: 600;
+	color: #3f5c85;
+}
+
+.date_field input {
+	height: 44px;
+	border: 1px solid #c9d4e4;
+	border-radius: 10px;
+	padding: 0 12px;
+	font-size: 15px;
+	color: #1f2937;
+	background: #ffffff;
+}
+
+.travelers_popup {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.travelers_row {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	cursor: pointer;
-	transition: background 0.2s ease, transform 0.2s ease;
+	gap: 12px;
 }
 
-.footer_nav_btn:hover {
-	background: rgba(255, 255, 255, 0.18);
+.traveler_btn {
+	width: 44px;
+	height: 44px;
+	border: none;
+	border-radius: 50%;
+	background: #243a6f;
+	color: #ffffff;
+	font-size: 24px;
+	cursor: pointer;
+	transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.traveler_btn:hover {
+	transform: scale(1.05);
+	background: #2c4786;
+}
+
+.traveler_input {
+	width: 90px;
+	height: 44px;
+	border: 1px solid #c9d4e4;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
+	color: #243a6f;
+	background: #ffffff;
+}
+
+.popup_done_btn {
+	width: 100%;
+	border: none;
+	border-radius: 12px;
+	padding: 12px 16px;
+	background: #243a6f;
+	color: #ffc857;
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.popup_done_btn:hover {
+	background: #2c4786;
+	transform: translateY(-1px);
+}
+
+.search_control {
+	position: relative;
+}
+
+.search_control .search_item {
+	width: 100%;
+	border: 2px solid #1f2f4d;
+	font: inherit;
+}
+
+.search_popup {
+	position: absolute;
+	top: calc(100% + 10px);
+	left: 50%;
+	transform: translateX(-50%);
+	width: 320px;
+	max-width: 90vw;
+	background: rgba(255, 255, 255, 0.98);
+	border-radius: 16px;
+	box-shadow: 0 16px 36px rgba(15, 23, 42, 0.22);
+	border: 1px solid #d9e2ec;
+	padding: 14px;
+	z-index: 30;
+}
+
+.location_dropdown {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	max-height: 320px;
+	overflow-y: auto;
+}
+
+.dropdown_option {
+	width: 100%;
+	text-align: left;
+	padding: 12px 14px;
+	border: none;
+	border-radius: 10px;
+	background: #f5f7fb;
+	color: #243a6f;
+	font-size: 15px;
+	cursor: pointer;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown_option:hover {
+	background: #e8eef8;
+	transform: translateX(2px);
+}
+
+.popup_title {
+	font-size: 16px;
+	font-weight: 700;
+	color: #243a6f;
+	margin-bottom: 12px;
+	text-align: center;
+}
+
+.date_picker_popup {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.date_fields {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.date_field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.date_field label {
+	font-size: 14px;
+	font-weight: 600;
+	color: #3f5c85;
+}
+
+.date_field input {
+	height: 44px;
+	border: 1px solid #c9d4e4;
+	border-radius: 10px;
+	padding: 0 12px;
+	font-size: 15px;
+	color: #1f2937;
+	background: #ffffff;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+	cursor: pointer;
+}
+
+.date_field input:hover {
+	border-color: #4a6b99;
+	background-color: #f8fbff;
+	box-shadow: 0 0 0 4px rgba(74, 107, 153, 0.12);
+	transform: translateY(-1px);
+}
+
+.date_field input:focus {
+	border-color: #243a6f;
+	background-color: #ffffff;
+	box-shadow: 0 0 0 4px rgba(36, 58, 111, 0.14);
+	outline: none;
+}
+
+.date_field input::-webkit-calendar-picker-indicator {
+	cursor: pointer;
+	opacity: 0.9;
+	transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.date_field input:hover::-webkit-calendar-picker-indicator {
+	transform: scale(1.08);
+	opacity: 1;
+}
+
+.travelers_popup {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.travelers_row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+}
+
+.traveler_btn {
+	width: 44px;
+	height: 44px;
+	border: none;
+	border-radius: 50%;
+	background: #243a6f;
+	color: #ffffff;
+	font-size: 24px;
+	cursor: pointer;
+	transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.traveler_btn:hover {
+	transform: scale(1.05);
+	background: #2c4786;
+}
+
+.traveler_input {
+	width: 90px;
+	height: 44px;
+	border: 1px solid #c9d4e4;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
+	color: #243a6f;
+	background: #ffffff;
+}
+
+.popup_done_btn {
+	width: 100%;
+	border: none;
+	border-radius: 12px;
+	padding: 12px 16px;
+	background: #243a6f;
+	color: #ffc857;
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.popup_done_btn:hover {
+	background: #2c4786;
 	transform: translateY(-1px);
 }
 
 @media (max-width: 600px) {
-	.submit_btn button {
-		color: #ffc857;
+	.search_popup {
+		width: 280px;
+	}
+}
+
+@media (max-width: 600px) {
+	.search_popup {
+		width: 280px;
 	}
 
-	.search_bar {
-		flex-direction: column;
-		gap: 18px;
-		width: 100%;
-		align-items: center;
-	}
-
-	.search_item {
-		width: 100%;
-		max-width: 320px;
-		font-size: 18px;
-		padding: 18px 24px;
-	}
-
-	.options_bar {
-		padding: 18px 16px;
-		width: 100%;
-		height: auto;
-		gap: 28px;
-	}
-
-	.option_item {
-		font-size: 1.05rem;
-	}
-
-	.option_item svg {
-		font-size: 34px;
-	}
-
-	.title {
-		font-size: 25px;
-		font-weight: 570;
-	}
 }

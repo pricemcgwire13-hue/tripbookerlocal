@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import './searchresult.css'
 import Hotel1 from '../../assets/Hotel1.png'
 import Hotel2 from '../../assets/Hotel2.png'
@@ -10,7 +10,7 @@ import Marriott from '../../assets/marriott.png'
 import Hyatt_Raleigh from '../../assets/hyatt_raleigh.png'
 import Umstead from '../../assets/umstead.png'
 import AutoInput from './AutoInput.jsx'
-import { FaHome, FaArrowLeft, FaArrowRight } from 'react-icons/fa'
+import { FaHome, FaArrowLeft, FaArrowRight, FaCalendarAlt } from 'react-icons/fa'
 
 const hotelsData = [
   {
@@ -89,29 +89,49 @@ const hotelsData = [
 
 const Searchresult = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const dateRef = useRef(null)
 
-  const [query, setQuery] = useState("")
+  const incomingLocation = location.state?.selectedLocation || ''
+  const incomingStartDate = location.state?.startDate || ''
+  const incomingEndDate = location.state?.endDate || ''
+
+  const [query, setQuery] = useState(incomingLocation)
   const [results, setResults] = useState(hotelsData)
   const [loading, setLoading] = useState(false)
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [selectedFilters, setSelectedFilters] = useState([])
+  const [showDatePicker, setShowDatePicker] = useState(false)
+  const [startDate, setStartDate] = useState(incomingStartDate)
+  const [endDate, setEndDate] = useState(incomingEndDate)
 
   const filterOptions = ["Old Quarter", "Pool", "Breakfast"]
 
   useEffect(() => {
-    if (query === "") {
-      setResults(hotelsData)
-      setShowSuggestions(false)
-      return
+    const handleClickOutside = (event) => {
+      if (dateRef.current && !dateRef.current.contains(event.target)) {
+        setShowDatePicker(false)
+      }
     }
 
-    setShowSuggestions(true)
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
-    let filtered = hotelsData.filter(hotel =>
-      hotel.name.toLowerCase().includes(query.toLowerCase()) ||
-      hotel.city.toLowerCase().includes(query.toLowerCase()) ||
-      hotel.features.join(" ").toLowerCase().includes(query.toLowerCase())
-    )
+  useEffect(() => {
+    let filtered = hotelsData
+
+    if (query.trim() !== "") {
+      setShowSuggestions(true)
+
+      filtered = filtered.filter(hotel =>
+        hotel.name.toLowerCase().includes(query.toLowerCase()) ||
+        hotel.city.toLowerCase().includes(query.toLowerCase()) ||
+        hotel.features.join(" ").toLowerCase().includes(query.toLowerCase())
+      )
+    } else {
+      setShowSuggestions(false)
+    }
 
     if (selectedFilters.length > 0) {
       filtered = filtered.filter(hotel =>
@@ -123,8 +143,16 @@ const Searchresult = () => {
       )
     }
 
+    if (incomingLocation) {
+      filtered = [...filtered].sort((a, b) => {
+        const aMatch = a.name === incomingLocation ? 1 : 0
+        const bMatch = b.name === incomingLocation ? 1 : 0
+        return bMatch - aMatch
+      })
+    }
+
     setResults(filtered)
-  }, [query, selectedFilters])
+  }, [query, selectedFilters, incomingLocation])
 
   const handleSearch = () => {
     setLoading(true)
@@ -141,11 +169,70 @@ const Searchresult = () => {
     )
   }
 
+  const formatDateRange = () => {
+    if (startDate && endDate) return `${startDate} → ${endDate}`
+    if (startDate) return startDate
+    return 'Select Date(s)'
+  }
+
   return (
     <div className="search_result">
 
       <div className="search_container">
-        <input type="date" className="date_input" />
+        <div className="search_control" ref={dateRef}>
+          <button
+            type="button"
+            className="date_search_button"
+            onClick={() => setShowDatePicker((prev) => !prev)}
+          >
+            <FaCalendarAlt />
+            <span>{formatDateRange()}</span>
+          </button>
+
+          {showDatePicker && (
+            <div className="search_popup date_picker_popup">
+              <div className="popup_title">Choose your travel dates</div>
+
+              <div className="date_fields">
+                <div className="date_field">
+                  <label htmlFor="resultsStartDate">Start Date</label>
+                  <input
+                    id="resultsStartDate"
+                    type="date"
+                    value={startDate}
+                    onChange={(e) => {
+                      const newStart = e.target.value
+                      setStartDate(newStart)
+
+                      if (endDate && newStart > endDate) {
+                        setEndDate('')
+                      }
+                    }}
+                  />
+                </div>
+
+                <div className="date_field">
+                  <label htmlFor="resultsEndDate">End Date</label>
+                  <input
+                    id="resultsEndDate"
+                    type="date"
+                    value={endDate}
+                    min={startDate || ''}
+                    onChange={(e) => setEndDate(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <button
+                type="button"
+                className="popup_done_btn"
+                onClick={() => setShowDatePicker(false)}
+              >
+                Done
+              </button>
+            </div>
+          )}
+        </div>
 
         <div style={{ position: "relative" }}>
           <AutoInput
