@@ -92,6 +92,7 @@ const Checkout = () => {
 	const [bookingComplete, setBookingComplete] = useState(false)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [pageReady, setPageReady] = useState(false)
+	const [submitFeedback, setSubmitFeedback] = useState('')
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -223,6 +224,10 @@ const Checkout = () => {
 
 		setFormData(updatedData)
 		setErrors(validateForm(updatedData))
+
+		if (submitFeedback) {
+			setSubmitFeedback('')
+		}
 	}
 
 	const handleSubmit = (e) => {
@@ -234,9 +239,12 @@ const Checkout = () => {
 
 		if (Object.keys(newErrors).length > 0) {
 			setErrors(newErrors)
+			setSubmitFeedback('Please complete all required fields before submitting.')
+			window.scrollTo({ top: 0, behavior: 'smooth' })
 			return
 		}
 
+		setSubmitFeedback('')
 		setErrors({})
 		setIsSubmitting(true)
 
@@ -309,6 +317,12 @@ const Checkout = () => {
 		<div className={`checkout_page ${pageReady ? 'page_ready' : ''}`}>
 			<div className="checkout_content">
 				<form className="checkout_left" onSubmit={handleSubmit} noValidate>
+					{submitFeedback && (
+						<div className="submit_feedback">
+							{submitFeedback}
+						</div>
+					)}
+
 					<section className="form_section">
 						<div className="section_header">
 							<h2>Traveler Details</h2>
