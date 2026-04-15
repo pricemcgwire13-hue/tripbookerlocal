@@ -152,7 +152,6 @@ const Searchresult = () => {
             value={query}
             onChange={(e, { newValue }) => setQuery(newValue)}
             placeholder="Search for location"
-            inputStyle="search_input"
             data={hotelsData}
           />
         </div>

@@ -1,6 +1,7 @@
 import './searchresult.css'
 import { useState } from 'react'
 import Autosuggest from 'react-autosuggest'
+import theme from './theme.module.css'
 // https://github.com/moroshko/react-autosuggest#installation
 
 const getSuggestions = (value, data) => {
@@ -42,7 +43,6 @@ const AutoInput = ({ value, onChange, placeholder, inputStyle, data}) => {
   };
 
   return (
-	<div className={inputStyle}>
     <Autosuggest
       suggestions={suggestions}
       onSuggestionsFetchRequested={onSuggestionsFetchRequested}
@@ -50,8 +50,8 @@ const AutoInput = ({ value, onChange, placeholder, inputStyle, data}) => {
       getSuggestionValue={getSuggestionValue}
       renderSuggestion={renderSuggestion}
       inputProps={inputProps}
+	  theme={theme}
     />
-	</div>
   );
 }
 
