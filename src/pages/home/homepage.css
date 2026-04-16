@@ -331,6 +331,28 @@
 	transform: translateY(-1px);
 }
 
+.mini_spinner {
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+	border: 2px solid rgba(122, 31, 43, 0.25);
+	border-top-color: #7a1f2b;
+	border-radius: 50%;
+	animation: spin 0.75s linear infinite;
+}
+
+.submit_btn button.loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
 @media (max-width: 600px) {
 	.search_popup {
 		width: 280px;
