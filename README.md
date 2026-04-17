@@ -45,3 +45,4 @@ Our current system does not match the wireframes since we have developed it to b
   We took the dropdown list outside of  the search field so it overlays the page rather than expanding the input box.
   We have added  "No results found" below the search field.
   We have added active state that was missing on one layout.
+  As well as added some other cosmetic changes 
