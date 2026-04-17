@@ -248,7 +248,7 @@ const Searchresult = () => {
           onClick={handleSearch}
           disabled={loading}
         >
-          {loading ? <div className="spinner"></div> : "Search"}
+          {loading ? <div className="mini_spinner"></div> : "Search"}
         </button>
       </div>
 

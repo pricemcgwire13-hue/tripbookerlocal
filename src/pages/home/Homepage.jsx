@@ -288,8 +288,8 @@ const Homepage = () => {
 					>
 						{isSubmitting ? (
 							<>
-								<span className="spinner"></span>
-								Loading...
+								<span className="mini_spinner"></span>
+								
 							</>
 						) : (
 							'Submit'
