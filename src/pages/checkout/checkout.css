@@ -127,7 +127,7 @@
 
 .input_error {
 	border-color: #4150df !important;
-	background: #fff5f5 !important;
+	background: #ecbbbb !important;
 }
 
 .input_error:focus {
@@ -341,7 +341,7 @@
 	width: 18px;
 	height: 18px;
 	border: 2px solid rgba(255, 255, 255, 0.35);
-	border-top-color: #ffffff;
+	border-top-color: #962d2d;
 	border-radius: 50%;
 	animation: spin 0.75s linear infinite;
 }
@@ -582,7 +582,7 @@
 	padding: 14px 16px;
 	border-radius: 14px;
 	background: #fff4f4;
-	border: 1px solid #f3b3b3;
+	border: 1px solid #ee4d4d;
 	color: #b42318;
 	font-size: 0.95rem;
 	font-weight: 700;
