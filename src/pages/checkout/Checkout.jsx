@@ -255,64 +255,6 @@ const Checkout = () => {
 		}, 1400)
 	}
 
-	if (bookingComplete) {
-		return (
-			<div className={`checkout_page ${pageReady ? 'page_ready' : ''}`}>
-				<div className="checkout_content">
-					<div className="success_card success_show">
-						<div className="success_icon">
-							<FaCheckCircle />
-						</div>
-
-						<h2>Booking Confirmed</h2>
-
-						<p>
-							Your St. Lucia trip has been successfully reserved. A confirmation email
-							has been sent to <strong>{formData.email}</strong>.
-						</p>
-
-						<div className="success_details">
-							<div className="success_detail_row">
-								<span>Traveler</span>
-								<span>{formData.firstName} {formData.lastName}</span>
-							</div>
-							<div className="success_detail_row">
-								<span>Destination</span>
-								<span>St. Lucia</span>
-							</div>
-							<div className="success_detail_row">
-								<span>Dates</span>
-								<span>May 18 – May 23</span>
-							</div>
-							<div className="success_detail_row">
-								<span>Total Paid</span>
-								<span>$2,480</span>
-							</div>
-						</div>
-
-						<div className="success_actions">
-							<button
-								type="button"
-								className="confirm_btn"
-								onClick={() => navigate('/')}
-							>
-								Return Home
-							</button>
-
-							<button
-								type="button"
-								className="secondary_btn"
-								onClick={() => setBookingComplete(false)}
-							>
-								Back to Checkout
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		)
-	}
-
 	return (
 		<div className={`checkout_page ${pageReady ? 'page_ready' : ''}`}>
 			<div className="checkout_content">
@@ -666,6 +608,60 @@ const Checkout = () => {
 					</section>
 				</div>
 			</div>
+
+			{bookingComplete && (
+				<div className="success_overlay">
+					<div className="success_card success_show">
+						<div className="success_icon">
+							<FaCheckCircle />
+						</div>
+
+						<h2>Booking Confirmed</h2>
+
+						<p>
+							Your St. Lucia trip has been successfully reserved. A confirmation email
+							has been sent to <strong>{formData.email}</strong>.
+						</p>
+
+						<div className="success_details">
+							<div className="success_detail_row">
+								<span>Traveler</span>
+								<span>{formData.firstName} {formData.lastName}</span>
+							</div>
+							<div className="success_detail_row">
+								<span>Destination</span>
+								<span>St. Lucia</span>
+							</div>
+							<div className="success_detail_row">
+								<span>Dates</span>
+								<span>May 18 – May 23</span>
+							</div>
+							<div className="success_detail_row">
+								<span>Total Paid</span>
+								<span>$2,480</span>
+							</div>
+						</div>
+
+						<div className="success_actions">
+							<button
+								type="button"
+								className="confirm_btn"
+								onClick={() => navigate('/')}
+							>
+								Return Home
+							</button>
+
+							<button
+								type="button"
+								className="secondary_btn"
+								onClick={() => setBookingComplete(false)}
+							>
+								Back to Checkout
+							</button>
+						</div>
+					</div>
+				</div>
+			)}
 		</div>
 	)
 }
