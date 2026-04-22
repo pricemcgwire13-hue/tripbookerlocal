@@ -272,22 +272,33 @@
 		margin: 0 auto;
 		flex-wrap: wrap;
 		justify-content: center;
-		gap: 8px;
-		padding: 12px 10px;
+		gap: 6px;
+		padding: 10px 8px;
 		box-sizing: border-box;
 	}
 
 	.option_item {
-		padding: 10px 12px;
-		min-width: 72px;
-		font-size: 14px;
+		padding: 8px 10px;
+		min-width: 64px;
+		font-size: 12px;
+		gap: 4px;
 	}
 
-	.option_item svg {
-		font-size: 22px;
+	
+
+	/* FORCE MOBILE ICON SIZE FIX */
+@media (max-width: 600px) {
+	.options_bar .option_item svg {
+		font-size: 30px !important;
 	}
 
-	.option_item span {
-		font-size: 14px;
+	.options_bar .option_item span {
+		font-size: 12px !important;
 	}
+
+	.options_bar .option_item {
+		padding: 8px 10px !important;
+		min-width: 30px !important;
+	}
+}
 }
