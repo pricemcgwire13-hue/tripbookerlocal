@@ -251,14 +251,13 @@ const Checkout = () => {
 		setTimeout(() => {
 			setIsSubmitting(false)
 			setBookingComplete(true)
-			window.scrollTo({ top: 0, behavior: 'smooth' })
 		}, 1400)
 	}
 
 	if (bookingComplete) {
 		return (
 			<div className={`checkout_page ${pageReady ? 'page_ready' : ''}`}>
-				<div className="checkout_content">
+				<div className="success_overlay">
 					<div className="success_card success_show">
 						<div className="success_icon">
 							<FaCheckCircle />
