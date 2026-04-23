@@ -602,6 +602,30 @@
 		height: 300px;
 	}
 
+	:root[data-mode='dark'] .trust_item,
+:root[data-mode='dark'] .booking_meta_item,
+:root[data-mode='dark'] .success_details,
+:root[data-mode='dark'] .secondary_btn {
+	background: var(--surface-2);
+	border-color: var(--border-color);
+	color: var(--text-primary);
+}
+
+:root[data-mode='dark'] .booking_badge {
+	background: rgba(96, 165, 250, 0.2);
+	color: var(--accent);
+}
+
+:root[data-mode='dark'] .submit_feedback {
+	background: rgba(185, 28, 28, 0.2);
+	border-color: #f87171;
+	color: #fecaca;
+}
+
+:root[data-mode='dark'] .success_overlay {
+	background: rgba(2, 6, 23, 0.8);
+}
+
 
 }
 

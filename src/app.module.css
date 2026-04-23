@@ -1,14 +1,14 @@
 .light {
-  --bg: white;
-  --text: black;
+  --bg: var(--surface-1);
+  --text: var(--text-primary);
 }
 
 .dark {
-  --bg: #403E3E;
-  --text: white;
+  --bg: var(--surface-1);
+  --text: var(--text-primary);
 }
 
-.canvas { 
+.canvas {
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -17,6 +17,6 @@
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
+  width: 0;
+  background: transparent;
 }

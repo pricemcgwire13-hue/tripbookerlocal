@@ -234,4 +234,13 @@
 	.profile_card {
 		padding: 24px 22px;
 	}
+
+
+	:root[data-mode='dark'] .profile_page {
+	background: linear-gradient(180deg, var(--surface-1) 0%, var(--surface-2) 100%);
+}
+
+:root[data-mode='dark'] .profile_avatar_wrap {
+	background: linear-gradient(180deg, rgba(96, 165, 250, 0.22) 0%, rgba(59, 130, 246, 0.2) 100%);
+}
 }

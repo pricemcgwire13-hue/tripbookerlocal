@@ -1,7 +1,7 @@
 .checkout_footer_bar {
 	height: 8vh;
 	width: 100%;
-    background: rgba(15, 23, 42, 0.96);
+    background: var(--footer-bg);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
@@ -25,8 +25,8 @@
     height: 46px;
     border: none;
     border-radius: 14px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    background: var(--footer-btn-bg);
+    color: var(--surface-1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,7 +35,7 @@
 }
 
 .footer_nav_btn:hover {
-    background: rgba(255, 255, 255, 0.18);
+    background: var(--footer-btn-bg-hover);
     transform: translateY(-1px);
 }
 

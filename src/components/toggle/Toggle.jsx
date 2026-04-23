@@ -1,16 +1,20 @@
-import "./toggle.css";
+import './toggle.css'
 
 function Toggle({ checked, onChange }) {
-  return (
-    <label className="toggle">
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={onChange}
-      />
-      <span className="slider"></span>
-    </label>
-  );
+	return (
+		<label className='theme_toggle'>
+			<span className='toggle_label'>{checked ? 'Dark' : 'Light'}</span>
+			<input
+				type='checkbox'
+				checked={checked}
+				onChange={onChange}
+				role='switch'
+				aria-label='Toggle dark mode'
+				aria-checked={checked}
+			/>
+			<span className='slider'></span>
+		</label>
+	)
 }
 
-export default Toggle;
+export default Toggle

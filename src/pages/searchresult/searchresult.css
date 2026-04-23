@@ -552,4 +552,38 @@
 	.card_content h3 {
 		font-size: 19px;
 	}
+
+	:root[data-mode='dark'] .search_result {
+	background: var(--surface-1);
+}
+
+:root[data-mode='dark'] .filters_panel,
+:root[data-mode='dark'] .card,
+:root[data-mode='dark'] .no_results,
+:root[data-mode='dark'] .search_popup,
+:root[data-mode='dark'] .date_search_button {
+	background: var(--surface-2);
+	border-color: var(--border-color);
+	color: var(--text-primary);
+}
+
+:root[data-mode='dark'] .filters_title,
+:root[data-mode='dark'] .hotel_city,
+:root[data-mode='dark'] .card_content ul,
+:root[data-mode='dark'] .miles,
+:root[data-mode='dark'] .popup_title,
+:root[data-mode='dark'] .date_field label {
+	color: var(--text-secondary);
+}
+
+:root[data-mode='dark'] .filter_item:hover {
+	background: rgba(148, 163, 184, 0.14);
+}
+
+:root[data-mode='dark'] .search_input,
+:root[data-mode='dark'] .date_field input {
+	background: var(--surface-1);
+	border-color: var(--border-color);
+	color: var(--text-primary);
+}
 }
